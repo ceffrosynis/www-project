@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('cryptowallet.urls')),
+    path('', include('cryptowallet.urls', namespace='crypto')),
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]
