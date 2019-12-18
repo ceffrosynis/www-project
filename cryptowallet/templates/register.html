@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,24 +10,18 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="css/nouislider.css">
-
-
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href=" {% static "css/open-iconic-bootstrap.min.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/animate.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/owl.carousel.min.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/owl.theme.default.min.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/magnific-popup.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/aos.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/ionicons.min.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/bootstrap-datetimepicker.min.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/nouislider.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/flaticon.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/icomoon.css" %} ">
+    <link rel="stylesheet" href=" {% static "css/style.css" %} ">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -34,7 +30,7 @@
 
     <style>
         body {
-            background-image: url('../back.jpg');
+            background-image: url("{% static "back.jpg" %}");
             background-repeat: no-repeat;
             background-size: cover;
         }
