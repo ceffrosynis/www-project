@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CoinProfile - Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static "css/open-iconic-bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/owl.theme.default.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "css/aos.css" %}">
+    <link rel="stylesheet" href="{% static "css/ionicons.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-datetimepicker.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/nouislider.css" %}">
+    <link rel="stylesheet" href="{% static "css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "css/icomoon.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+    
+
+    <style>
+        section, html, body{
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            background-image: url("{% static "back.jpg" %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+        <div class="px-0 bg-info navbar-wrap mb-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="navbar px-0 navbar-expand-lg navbar-light">
+                                <a class="navbar-brand" href="navbar.html">Crypto Wallet</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                    <span class="oi oi-menu"></span>
+                                </button>
+        
+                                <div class="collapse navbar-collapse" id="navbarsExample05">
+                                    <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item d-flex dropdown">
+                                            <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              User
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                              <a class="dropdown-item" href="login.html">Login</a>
+                                              <a class="dropdown-item" href="register.html">Resgister</a>
+                                              <div class="dropdown-divider"></div>
+                                              <a class="dropdown-item" href="">Logout</a>
+                                            </div>
+                                          </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <section class="ftco-section ftco-section-2 section-signup page-header img">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <div class="card card-login py-4">
+                        <form class="form-login" method="" action="">
+                            <div class="card-header card-header-primary text-center">
+                                <h4 class="card-title">Login</h4>
+                            </div>
+                            <div class="card-body px-4 pb-4 pt-2">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="ion-ios-contact"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Username">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="ion-ios-lock"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Password...">
+                                </div>
+                            </div>
+                            <div class="footer text-center">
+                                <a href="#" class="btn btn-white">Submit</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
