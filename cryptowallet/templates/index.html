@@ -115,14 +115,36 @@
               </li>
             </ul>
             <div class="tab-content rounded mt-2">
-              <div class="tab-pane container p-4 active" id="home1">
-                <center><img src="Qr-1.png" /></center>
+              <div class="tab-pane container p-4 fade" id="home1">
+                {% if btc %}
+                {% for address in btc %}
+                <center><img src="Qr-1.png" />
+                  <p>{{ address.BTC }}</p>
+                </center>
+                {% endfor %}
+                {% else %}
+                <p>Bitcoin wallet not available.</p>
+                {% endif %}
               </div>
-              <div class="tab-pane container p-4 fade" id="home2">
-                <center><img src="Qr-1.png" /></center>
+              <div class="tab-pane container p-4 active" id="home2">
+                {% if eth %}
+                {% for address in eth %}
+                <center><img src="btc_img" />
+                  <p>{{ address.ETH }}</p>
+                </center>
+                {% endfor %}
+                {% else %}
+                <p>Ethereum wallet not available.</p>
+                {% endif %}
               </div>
               <div class="tab-pane container p-4 fade" id="home3">
+                {% if ltc %}
+                {% for address in ltc %}
+                <p>{{ address.LTC }}</p>
+                {% endfor %}
+                {% else %}
                 <p>Litecoin wallet not available.</p>
+                {% endif %}
               </div>
             </div>
           </div>
