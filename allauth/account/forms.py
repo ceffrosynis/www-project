@@ -266,7 +266,8 @@ class BaseSignupForm(_base_signup_form_class()):
                                widget=forms.TextInput(
                                    attrs={'placeholder':
                                           _('Username'),
-                                          'autofocus': 'autofocus'}))
+                                          'autofocus': 'autofocus',
+                                          'class':'form-control'}))
     email = forms.EmailField(widget=forms.TextInput(
         attrs={'type': 'email',
                'placeholder': _('E-mail address')}))

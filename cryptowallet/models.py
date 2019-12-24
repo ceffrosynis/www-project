@@ -16,6 +16,11 @@ class BTCWallet(models.Model):
     UserID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     BTC = models.CharField(max_length=100, primary_key=True)
 
+    @classmethod
+    def create(cls, UserID, BTC):
+        BTCWallet = cls(UserID=UserID, BTC=BTC)
+        return BTCWallet
+
     def __str__(self):
         return str(self.UserID)
 

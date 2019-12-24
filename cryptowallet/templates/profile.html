@@ -12,13 +12,24 @@
         .edit-info .row {
             margin: 10px;
         }
-        {% endblock %}
+        .block {
+            background:white;
+        }
+    {% endblock %}
     </style>
     
+
     </head>
 
 <body>
     {% block content %}
+    <!-- <script>
+        $(document).ready(function(){
+            $("#newBTC").click(function(){
+                $("profile_form").submit();
+            })
+        })
+    </script> -->
     <section class="ftco-section ftco-section-2" id="navigationTabs">
         <div class="container edit-info">
             <div class="row justify-content-center">
@@ -29,7 +40,7 @@
                         <center>Edit Profile</center>
                     </h2>
 
-                    <form method='post'>
+                    <form id='profile_form' method='post'>
                         {% csrf_token %}
                         <div class="row">
                             <div class="col">
@@ -45,18 +56,28 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-10">
                                 {{form.BTC}}
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                {{form.ETH}}
+                            <div class="col-2">
+                                <a href="{% url 'crypto:profile'%}?newbtc=1" type="button" id="newBTC" class="btn btn-primary">+</a>
+                                <!-- <button type="button" id="newBTC" class="btn btn-primary">+</button> -->
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-10">
+                                {{form.ETH}}
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-primary">+</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">
                                 {{form.LTC}}
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-primary">+</button>
                             </div>
                         </div>
 

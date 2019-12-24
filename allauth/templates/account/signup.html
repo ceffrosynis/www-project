@@ -1,21 +1,101 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load account socialaccount %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block title %}
+<title>CryptoWallet - Sign up</title>
+{% endblock %}
+{% block head_title %}CryptoWallet - Sign up{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<!-- {% get_providers as socialaccount_providers %} -->
+
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
 </form>
+
+
+
+
+
+<section class="ftco-section ftco-section-2 section-signup page-header img">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+        <div class="card card-login py-4">
+
+          <form class="login form-login" id="signup_form" method="POST" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            <div class="card-header card-header-primary text-center">
+              <h4 class="card-title">{% trans "Sign Up" %}</h4>
+              {% if socialaccount_providers %}
+              <p>{% blocktrans with site.name as site_name %}Please sign in with one
+                of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+              <div class="socialaccount_ballot">
+
+                <ul class="socialaccount_providers">
+                  {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                </ul>
+
+                <div class="login-or">{% trans 'or' %}</div>
+
+              </div>
+
+              {% include "socialaccount/snippets/login_extra.html" %}
+
+              {% else %}
+              <p style="color: rgb(255, 255, 255);">{% blocktrans %}Already have an account? Then please 
+                <a style="color:black;" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+              {% endif %}
+            </div>
+
+            <div class="card-body px-4 pb-4 pt-2">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ion-ios-contact"></i>
+                  </span>
+                </div>
+                {{form.username}}
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ion-ios-lock"></i>
+                  </span>
+                </div>
+                {{form.password1}}
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ion-ios-lock"></i>
+                  </span>
+                </div>
+                {{form.password2}}
+              </div>
+            </div>
+            <div class="footer text-center">
+              <button class="primaryAction btn btn-white" type="submit">{% trans "Sign Up" %}</button>
+            </div>
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="button secondaryAction"
+              href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

@@ -33,6 +33,17 @@ class profile(LoginRequiredMixin, View):
                 ltc=''
             else:
                 ltc=ltc[0].LTC
+            try:
+                if request.GET['newbtc']:
+                    btc_old = btc
+                    btc = CreateBTCWallet()
+                    b=BTCWallet.create(request.user, btc)
+                    b.save()
+                    # btc = CreateBTCWallet()
+            #         btc[0].BTC = btc
+            #         btc[0].BTC.save()
+            except:
+                pass
             form = UserProfileForm(initial={
                 'FirstName': user[0].FirstName,
                 'LastName': user[0].LastName,
@@ -51,7 +62,6 @@ class profile(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         form = UserProfileForm(self.request.POST or None)
         if form.is_valid():
-            print("ksldkslkdlskd")
             FirstName = form.cleaned_data.get('FirstName')
             LastName = form.cleaned_data.get('LastName')
             Email = form.cleaned_data.get('Email')

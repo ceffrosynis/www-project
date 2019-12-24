@@ -1,12 +1,13 @@
 from pywallet import wallet
 import qrcode
 from io import StringIO
+import io
+import base64
 
 def CreateBTCWallet():
     seed = wallet.generate_mnemonic()
     w = wallet.create_wallet(network="BTC", seed=seed, children=0)
-    img = qrcode.make("bitcoin:" + w['address'])
-    return img
+    return w['address']
 
 def CreateETHWallet():
     seed = wallet.generate_mnemonic()
@@ -22,7 +23,9 @@ def CreateLTCWallet():
 
 def GenerateImage(address, coin):
     img = qrcode.make(coin + ":" + address)
-    #img = StringIO(img.tobytes("raw", 'RGBA'))
-    data_uri = 'data:image/jpg;base64,'
-    data_uri += str(base64.b64encode(img.tobytes()),'utf8')
+    imgByteArr = io.BytesIO()
+    img.save(imgByteArr, format='PNG')
+    imgByteArr = imgByteArr.getvalue()
+    b64_src = base64.b64encode(imgByteArr)
+    data_uri = 'data:image/png;base64, ' + str(b64_src, 'utf8')
     return data_uri
