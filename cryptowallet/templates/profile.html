@@ -12,9 +12,7 @@
         .edit-info .row {
             margin: 10px;
         }
-        .block {
-            background:white;
-        }
+
     {% endblock %}
     </style>
     
@@ -33,13 +31,10 @@
     <section class="ftco-section ftco-section-2" id="navigationTabs">
         <div class="container edit-info">
             <div class="row justify-content-center">
-
                 <div class="col-lg-6 mb-5 mb-md-0" style="opacity: 0.95">
-
-                    <h2 class="block heading-section mb-3">
+                    <h2 class="white-header heading-section mb-3 rounded">
                         <center>Edit Profile</center>
                     </h2>
-
                     <form id='profile_form' method='post'>
                         {% csrf_token %}
                         <div class="row">
