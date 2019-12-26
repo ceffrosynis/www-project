@@ -1,0 +1,69 @@
+{% extends "cryptobase.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}<title>CryptoWallet - Home</title>{% endblock %}
+
+    <style>
+        {
+            % block style %
+        }
+
+        .block {
+            background: white;
+        }
+
+        .address {
+            color: black;
+        }
+
+        #res_header {
+            background: white;
+        }
+
+        .tab-pane.visit-prof {
+          float:right;
+        }
+
+        { % endblock % }
+    </style>
+
+</head>
+
+<body>
+
+    {% block content %}
+
+    <section class="ftco-section ftco-section-2" id="navigationTabs">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 mb-5 mb-md-0" style="opacity: 0.95">
+                    <h2 id="res_header" class="block heading-section mb-3 rounded">
+                        <center>Result</center>
+                    </h2>
+                    <div class="tabulation-2">
+                        {% for u in user %}
+                            <div class="tab-content rounded mt-2">
+                                <div class="tab-pane container p-4 active">
+                                    {{u}}
+                                    <a href="{{get}}" class="visit-prof btn btn-primary">Visit Profile</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
+
+</body>
+
+
+
+</html>

@@ -25,3 +25,8 @@ class UserProfileForm(forms.Form):
         'class': 'form-control',
         'placeholder': 'Litecoin Address'
     }))
+
+class SearchForm(forms.Form):
+    search = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'placeholder': 'Search'
+    }))

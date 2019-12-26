@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import UserProfileForm
+from .forms import UserProfileForm, SearchForm
 from .models import User, BTCWallet, ETHWallet, LTCWallet
 from django.views.generic import View, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .walletapi import *
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
@@ -35,13 +36,11 @@ class profile(LoginRequiredMixin, View):
                 ltc=ltc[0].LTC
             try:
                 if request.GET['newbtc']:
-                    btc_old = btc
+                    btc = BTCWallet.objects.filter(UserID=request.user)
+                    if btc.exists():
+                        btc.delete()
                     btc = CreateBTCWallet()
                     b=BTCWallet.create(request.user, btc)
-                    b.save()
-                    # btc = CreateBTCWallet()
-            #         btc[0].BTC = btc
-            #         btc[0].BTC.save()
             except:
                 pass
             form = UserProfileForm(initial={
@@ -119,6 +118,7 @@ class profile(LoginRequiredMixin, View):
 class index(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         user = User.objects.filter(UserID=request.user)
+        form = SearchForm()
         if user.exists():
             btc = BTCWallet.objects.filter(UserID=request.user)
             
@@ -143,10 +143,34 @@ class index(LoginRequiredMixin, View):
                 'ltc': ltc,
                 'btc_img': btc_img,
                 'eth_img': eth_img,
-                'ltc_img': ltc_img
+                'ltc_img': ltc_img,
+                'form': form
             }
             return render(request, 'index.html', context=context)
 
         return redirect('crypto:profile')
 
+    def post(self, request, *args, **kwargs):
+        UserModel = get_user_model()
+        context = {}
+        form = SearchForm(self.request.POST or None)
+        if form.is_valid():
+            username = form.cleaned_data.get('search')
+            user = UserModel.objects.filter(username__contains=username)
+            if user.exists():
+                
+                user = User.objects.filter(UserID__in=user)
         
+                context = {
+                    'user': user
+                }
+
+        return render(request, 'search.html', context=context)
+    
+
+class List(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        pass
+        
+    def post(self, request, *args, **kwargs):
+        pass
