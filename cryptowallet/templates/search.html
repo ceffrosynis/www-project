@@ -18,12 +18,20 @@
             color: black;
         }
 
-        #res_header {
-            background: white;
+        .correct-flow {
+            display: flex !important;
+            align-items: center;
         }
 
-        .tab-pane.visit-prof {
-            float: right;
+        .visit-prof {
+            display: inline-flex;
+        }
+        .result {
+            flex: auto;
+            justify-content: left;
+            display: inline-flex;
+            width: inherit;
+            color:black;
         }
 
         {% endblock %}
@@ -39,7 +47,7 @@
             <div class="row">
 
                 <div class="col-lg-6 mb-5 mb-md-0" style="opacity: 0.95">
-                    <h2 id="res_header" class="block heading-section mb-3 rounded">
+                    <h2 class="block heading-section mb-3 rounded">
                         <center>Result</center>
                     </h2>
                     <form id='profile_form' method='post'>
@@ -47,9 +55,9 @@
                         <div class="tabulation-2">
                             {% for u in user %}
                             <div class="tab-content rounded mt-2">
-                                <div class="tab-pane container p-4 active">
-                                    {{u}}
-                                    <button id="vp_btn" type="submit" class="btn btn-primary" name="VisitProfile" value="{{u}}">Visit Profile</button>
+                                <div class="correct-flow tab-pane container p-4 active">
+                                    <span class="result">{{u}}</span>
+                                    <button id="vp_btn" type="submit" class="visit-prof btn btn-primary" name="VisitProfile" value="{{u}}">Visit Profile</button>
                                 </div>
                             </div>
                             {% endfor %}

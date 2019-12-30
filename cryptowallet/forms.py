@@ -28,7 +28,7 @@ class UserProfileForm(forms.Form):
 
 class SearchForm(forms.Form):
     search = forms.CharField(required=False, widget=forms.TextInput(attrs={
-        'placeholder': 'Search'
+        'placeholder': 'Search for a user'
     }))
 
 class WalletGeneration(forms.Form):
