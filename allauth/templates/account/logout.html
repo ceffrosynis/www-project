@@ -3,19 +3,35 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
+<head>
 
+</head>
+<body>
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
-
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
-
+<section class="ftco-section ftco-section-2 section-signup page-header img">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+        <div class="card card-login py-4">
+          
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            <div class="card-header card-header-primary text-center">
+              <h4 class="card-title" style="color: white;">{% trans "Sign Out" %}</h4>
+              <p style="color: black;">{% trans 'Are you sure you want to sign out?' %}</p>
+            </div>
+            <div id="btn_div" style="display: flex; justify-content: center;">
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button id="confirm_btn" type="submit" class="btn btn-danger">{% trans 'Sign Out' %}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}
