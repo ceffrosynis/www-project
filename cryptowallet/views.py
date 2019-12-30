@@ -64,15 +64,17 @@ class profile(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         form = UserProfileForm(self.request.POST or None)
         if form.is_valid():
-            WalletType = request.POST['WalletGeneration']
-            if WalletType:
-                wallet = self.Wallets[WalletType].objects.filter(UserID=request.user)
-                if wallet.exists():
-                    wallet.delete()
-                wallet = self.WalletGenerator[WalletType]()
-                self.arguments[WalletType][WalletType.upper()] = wallet
-                self.Wallets[WalletType].objects.create(UserID=request.user, **(self.arguments[WalletType]))
-                return redirect('crypto:profile')
+            if 'WalletGeneration' in request.POST:
+                WalletType = request.POST['WalletGeneration']
+                print (WalletType)
+                if WalletType:
+                    wallet = self.Wallets[WalletType].objects.filter(UserID=request.user)
+                    if wallet.exists():
+                        wallet.delete()
+                    wallet = self.WalletGenerator[WalletType]()
+                    self.arguments[WalletType][WalletType.upper()] = wallet
+                    self.Wallets[WalletType].objects.create(UserID=request.user, **(self.arguments[WalletType]))
+                    return redirect('crypto:profile')
         
             FirstName = form.cleaned_data.get('FirstName')
             LastName = form.cleaned_data.get('LastName')
