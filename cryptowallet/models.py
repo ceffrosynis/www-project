@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.dispatch import receiver
+# from django.db.models.signals import post_init
 
 # Create your models here.
 
@@ -12,14 +14,16 @@ class User(models.Model):
     def __str__(self):
         return str(self.UserID)
 
+# @receiver(post_init, sender=User)
+# def my_handler(sender, **kwargs):
+#     if sender.slug == '':
+#         print('post save callback')
+
 class BTCWallet(models.Model):
     UserID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     BTC = models.CharField(max_length=100, primary_key=True)
 
-    @classmethod
-    def create(cls, UserID, BTC):
-        BTCWallet = cls(UserID=UserID, BTC=BTC)
-        return BTCWallet
+    
 
     def __str__(self):
         return str(self.UserID)

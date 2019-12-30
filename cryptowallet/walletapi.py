@@ -13,13 +13,13 @@ def CreateETHWallet():
     seed = wallet.generate_mnemonic()
     w = wallet.create_wallet(network="ETH", seed=seed, children=0)
     img = qrcode.make("ethereum:" + w['address'])
-    return img
+    return w['address']
 
 def CreateLTCWallet():
     seed = wallet.generate_mnemonic()
     w = wallet.create_wallet(network="LTC", seed=seed, children=0)
     img = qrcode.make("litecoin:" + w['address'])
-    return img
+    return w['address']
 
 def GenerateImage(address, coin):
     img = qrcode.make(coin + ":" + address)

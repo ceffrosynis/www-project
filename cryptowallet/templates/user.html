@@ -1,0 +1,101 @@
+{% extends "cryptobase.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block title %}<title>CryptoWallet - Home</title>{% endblock %}
+
+  <style>
+    {% block style %}
+    .block {
+      background:white;
+    }
+
+    .address {
+      color:black;
+    }
+    {% endblock %}
+  </style>
+
+</head>
+
+<body>
+
+{% block content %}
+
+  <section class="ftco-section ftco-section-2" id="navigationTabs">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 mb-5 mb-md-0" style="opacity: 0.95">
+          <h2 class="block heading-section mb-3">
+            <center>User's wallets</center>
+          </h2>
+          <div class="tabulation-2">
+            <ul class="nav nav-pills nav-fill d-md-flex d-block">
+              <li class="nav-item">
+                <a class="nav-link py-3" data-toggle="tab" href="#home1"><span class="mr-2"></span> <img src = '{% static "images/BTC.svg" %}' width=20rem/> Bitcoin
+                  (BTC)</a>
+              </li>
+              <li class="nav-item px-lg-2">
+                <a class="nav-link active py-3" data-toggle="tab" href="#home2"><span
+                    class="mr-2"></span> <img src = '{% static "images/ETH.svg" %}' width=20rem/> Etherium (ETH)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link py-3" data-toggle="tab" href="#home3"><span class="mr-2"></span>
+                  <img src = '{% static "images/LTC.svg" %}' width=20rem/> Litecoin (LTC) </a>
+              </li>
+            </ul>
+            <div class="tab-content rounded mt-2">
+              <div class="tab-pane container p-4 fade" id="home1">
+                {% if btc %}
+                <!-- {% for address in btc %} -->
+                <center>
+                  <img src="{{ btc_img }}" />
+                  <p class="address"><strong>Address: {{ address.BTC }}</strong></p>
+                </center>
+                <!-- {% endfor %} -->
+                {% else %}
+                <p>Bitcoin wallet not available.</p>
+                {% endif %}
+              </div>
+              <div class="tab-pane container p-4 active" id="home2">
+                {% if eth %}
+                {% for address in eth %}
+                <center>
+                  <img src="{{ eth_img }}" />
+                  <p class="address"><strong>Address: {{ address.ETH }}</strong></p>
+                </center>
+                {% endfor %}
+                {% else %}
+                <p>Ethereum wallet not available.</p>
+                {% endif %}
+              </div>
+              <div class="tab-pane container p-4 fade" id="home3">
+                {% if ltc %}
+                {% for address in ltc %}
+                <center>
+                  <img src="{{ ltc_img }}" />
+                  <p class="address"><strong>Address: {{ address.LTC }}</strong></p>
+                </center>
+                {% endfor %}
+                {% else %}
+                <p>Litecoin wallet not available.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+</body>
+
+
+
+</html>

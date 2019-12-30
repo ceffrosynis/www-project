@@ -30,3 +30,9 @@ class SearchForm(forms.Form):
     search = forms.CharField(required=False, widget=forms.TextInput(attrs={
         'placeholder': 'Search'
     }))
+
+class WalletGeneration(forms.Form):
+    WalletGeneration = forms.CharField()
+
+class VisitProfile(forms.Form):
+    VisitProfile = forms.CharField()

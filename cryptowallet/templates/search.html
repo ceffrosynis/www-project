@@ -25,10 +25,12 @@
         }
 
         .tab-pane.visit-prof {
-          float:right;
+            float: right;
         }
 
-        { % endblock % }
+            {
+            % endblock %
+        }
     </style>
 
 </head>
@@ -45,16 +47,19 @@
                     <h2 id="res_header" class="block heading-section mb-3 rounded">
                         <center>Result</center>
                     </h2>
-                    <div class="tabulation-2">
-                        {% for u in user %}
+                    <form id='profile_form' method='post'>
+                        {% csrf_token %}
+                        <div class="tabulation-2">
+                            {% for u in user %}
                             <div class="tab-content rounded mt-2">
                                 <div class="tab-pane container p-4 active">
                                     {{u}}
-                                    <a href="{{get}}" class="visit-prof btn btn-primary">Visit Profile</a>
+                                    <input type="submit" name="VisitProfile" value="{{u}}">
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>
+                            {% endfor %}
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
