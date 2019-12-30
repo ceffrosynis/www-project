@@ -28,7 +28,6 @@
 
         {% endblock %}
     </style>
-
 </head>
 
 <body>
@@ -50,7 +49,7 @@
                             <div class="tab-content rounded mt-2">
                                 <div class="tab-pane container p-4 active">
                                     {{u}}
-                                    <input type="submit" name="VisitProfile" value="{{u}}">
+                                    <button id="vp_btn" type="submit" class="btn btn-primary" name="VisitProfile" value="{{u}}">Visit Profile</button>
                                 </div>
                             </div>
                             {% endfor %}

@@ -32,7 +32,7 @@
 
         <div class="col-lg-6 mb-5 mb-md-0" style="opacity: 0.95">
           <h2 class="block heading-section mb-3">
-            <center>User's wallets</center>
+            <center>{% if username %}{{username}}'s{% else %}Your{% endif %} wallets</center>
           </h2>
           <div class="tabulation-2">
             <ul class="nav nav-pills nav-fill d-md-flex d-block">
@@ -52,10 +52,12 @@
             <div class="tab-content rounded mt-2">
               <div class="tab-pane container p-4 fade" id="home1">
                 {% if btc %}
+                {% for address in btc %}
                 <center>
                   <img src="{{ btc_img }}" />
                   <p class="address"><strong>Address: {{ address.BTC }}</strong></p>
                 </center>
+                {% endfor %}
                 {% else %}
                 <p>Bitcoin wallet not available.</p>
                 {% endif %}
@@ -94,7 +96,4 @@
   {% endblock %}
 
 </body>
-
-
-
 </html>

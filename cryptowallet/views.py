@@ -195,7 +195,8 @@ class index(LoginRequiredMixin, View):
                     'btc_img': WalletImages[0],
                     'eth_img': WalletImages[1],
                     'ltc_img': WalletImages[2],
-                    'form': form
+                    'form': form,
+                    'username': username
                 }
                 return render(request, 'index.html', context=context)
 
@@ -205,9 +206,7 @@ class index(LoginRequiredMixin, View):
                 username = form.cleaned_data.get('search')
                 user = UserModel.objects.filter(username__contains=username)
                 if user.exists():
-                    
                     user = User.objects.filter(UserID__in=user)
-            
                     context = {
                         'user': user
                     }
