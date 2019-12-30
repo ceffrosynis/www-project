@@ -9,6 +9,7 @@
 
   <style>
     {% block style %}
+
     .block {
       background:white;
     }
@@ -51,12 +52,10 @@
             <div class="tab-content rounded mt-2">
               <div class="tab-pane container p-4 fade" id="home1">
                 {% if btc %}
-                <!-- {% for address in btc %} -->
                 <center>
                   <img src="{{ btc_img }}" />
                   <p class="address"><strong>Address: {{ address.BTC }}</strong></p>
                 </center>
-                <!-- {% endfor %} -->
                 {% else %}
                 <p>Bitcoin wallet not available.</p>
                 {% endif %}

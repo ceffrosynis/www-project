@@ -8,9 +8,7 @@
 
 
     <style>
-        {
-            % block style %
-        }
+        {% block style %}
 
         .edit-info .row {
             margin: 10px;
@@ -20,9 +18,7 @@
             background: white;
         }
 
-            {
-            % endblock %
-        }
+        {% endblock %}
     </style>
 
 
@@ -30,13 +26,6 @@
 
 <body>
     {% block content %}
-    <!-- <script>
-        $(document).ready(function(){
-            $("#newBTC").click(function(){
-                $("profile_form").submit();
-            })
-        })
-    </script> -->
     <section class="ftco-section ftco-section-2" id="navigationTabs">
         <div class="container edit-info">
             <div class="row justify-content-center">
@@ -67,10 +56,8 @@
                                 {{form.BTC}}
                             </div>
                             <div class="col-2">
-                                <!-- <a href="{% url 'crypto:profile'%}?newbtc=1" type="button" id="newBTC" class="btn btn-primary">+</a> -->
-                                <!-- <button type="button" id="newBTC" class="btn btn-primary">+</button> -->
-                                    <button type="submit" name="WalletGeneration" class="btn btn-primary" ,
-                                        value="btc">+</button>
+                                <button type="submit" name="WalletGeneration" class="btn btn-primary" ,
+                                value="btc">+</button>
                             </div>
                         </div>
                         <div class="row">
