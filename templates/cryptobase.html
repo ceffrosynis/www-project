@@ -87,19 +87,9 @@
 <body>
   {% block body %}
 
-  {% if messages %}
-  <div>
-    <strong>Messages:</strong>
-    <ul>
-      {% for message in messages %}
-      <li>{{message}}</li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-
-
-
+  
+  
+  
   <div>
     <div class="px-0 bg-info navbar-wrap mb-2">
       <div class="container">
@@ -108,15 +98,15 @@
             <nav class="navbar px-0 navbar-expand-lg navbar-light">
               <a class="navbar-brand" href="{% url 'crypto:index' %}">Crypto Wallet</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
-                aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span>
-              </button>
-              {% if not profile %}
-              <div class="search-container">
-                <form method='post'>
-                  {% csrf_token %}
-                  {{form.search}}
-                  <button type="submit"><i class="fa fa-search"></i></button>
+              aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="oi oi-menu"></span>
+            </button>
+            {% if not profile %}
+            <div class="search-container">
+              <form method='post'>
+                {% csrf_token %}
+                {{form.search}}
+                <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div>
               {% endif %}
@@ -125,13 +115,13 @@
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item d-flex dropdown">
                     <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="navbarDropdown"
-                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      User
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      {% if not user.is_anonymous %}
-                      <a class="dropdown-item" href="{% url 'crypto:index' %}">Home</a>
-                      <a class="dropdown-item" href="{% url 'crypto:profile' %}">Edit Profile</a>
+                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if not user.is_anonymous %}
+                    <a class="dropdown-item" href="{% url 'crypto:index' %}">Home</a>
+                    <a class="dropdown-item" href="{% url 'crypto:profile' %}">Edit Profile</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                       {%else%}
                       <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
@@ -146,9 +136,17 @@
         </div>
       </div>
     </div>
+    
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            <strong>{{ message|escape }}</strong>
+        </div>
+        {% endfor %}
+    {% endif %}
 
     <!-- {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+      <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
         <li><a href="{% url 'account_login' %}">Sign In</a></li>

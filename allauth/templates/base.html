@@ -54,16 +54,6 @@
   <body>
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
     <div>
       <div class="px-0 bg-info navbar-wrap mb-2">
         <div class="container">
@@ -100,6 +90,14 @@
         </div>
       </div>
       
+
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            <strong>{{ message|escape }}</strong>
+        </div>
+        {% endfor %}
+      {% endif %}
         <!-- {% if user.is_authenticated %}
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
