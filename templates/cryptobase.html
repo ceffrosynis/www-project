@@ -128,7 +128,7 @@
                       User
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      {% if user.is_authenticated %}
+                      {% if not user.is_anonymous %}
                       <a class="dropdown-item" href="{% url 'crypto:index' %}">Home</a>
                       <a class="dropdown-item" href="{% url 'crypto:profile' %}">Edit Profile</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>

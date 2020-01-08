@@ -171,8 +171,8 @@ class index(LoginRequiredMixin, View):
         if request.method == 'POST':
             UserModel = get_user_model()
             button = VisitProfile(self.request.POST or None)
+            form = SearchForm()
             if button.is_valid():
-                form = SearchForm()
                 WalletImages = ['', '', '']
                 username = button.cleaned_data.get('VisitProfile')
                 user = UserModel.objects.filter(username=username)
@@ -208,7 +208,8 @@ class index(LoginRequiredMixin, View):
                 if user.exists():
                     user = User.objects.filter(UserID__in=user)
                     context = {
-                        'user': user
+                        'user': user,
+                        'form': form
                     }
 
             return render(request, 'search.html', context=context)
