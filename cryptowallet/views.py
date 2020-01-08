@@ -40,7 +40,7 @@ class profile(LoginRequiredMixin, View):
             }
             return render(request, 'profile.html', context=context)
         form = UserProfileForm(self.request.POST or None)
-        return render(request, 'profile.html', context={'form': form})
+        return render(request, 'profile.html', context={'form': form, 'profile': True})
 
     def userInfo(self):
         btc = BTCWallet.objects.filter(UserID=self.request.user)
