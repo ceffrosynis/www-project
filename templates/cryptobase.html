@@ -111,7 +111,7 @@
                 aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span>
               </button>
-
+              {% if not profile %}
               <div class="search-container">
                 <form method='post'>
                   {% csrf_token %}
@@ -119,6 +119,7 @@
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div>
+              {% endif %}
 
               <div class="collapse navbar-collapse" id="navbarsExample05">
                 <ul class="navbar-nav ml-auto">

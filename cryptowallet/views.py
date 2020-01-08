@@ -36,6 +36,7 @@ class profile(LoginRequiredMixin, View):
 
             context = {
                 'form': form,
+                'profile': True
             }
             return render(request, 'profile.html', context=context)
         form = UserProfileForm(self.request.POST or None)
