@@ -21,7 +21,6 @@
         {% endblock %}
     </style>
 
-
 </head>
 
 <body>
@@ -75,12 +74,12 @@
                             </div>
                             <div class="col-2">
                                     <button type="submit" name="WalletGeneration" class="btn btn-primary" ,
-                                        value="ltc">+</button>
+                                    value="ltc">+</button>
+                                </div>
                             </div>
-                        </div>
 
                         <div class="footer text-center">
-                            <button class="primaryAction btn btn-success w-50" type="submit">Save</button>
+                            <button id="save_btn" class="primaryAction btn btn-success w-50" type="submit">Save</button>
                         </div>
 
                     </form>
@@ -88,6 +87,15 @@
             </div>
         </div>
     </section>
+                <script>
+                    $(document).on('keyup keypress', (function(e) {
+                        var keyCode = e.keyCode || e.which;
+                        if (keyCode == 13) {
+                            e.preventDefault();
+                            $('#save_btn').click();
+                        }
+                    }));
+                </script>
     {% endblock %}
 </body>
 
